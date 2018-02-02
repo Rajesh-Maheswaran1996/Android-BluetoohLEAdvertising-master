@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
+
     }
 
     private void discover() {
@@ -91,10 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 else {
-                    StringBuilder builder = new StringBuilder(result.getDevice().getName());
-
-                    builder.append("\n").append(result.getRssi()+ "");
-                    mText.setText(builder.toString());
+                    mText.setText(mText.getText().toString()+"\n"+result.getDevice().getName()+":"+result.getRssi());
                 }
             }
 
@@ -119,12 +118,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBluetoothLeScanner.startScan(mScanCallback);
         Toast.makeText(this,"Scan has started",Toast.LENGTH_SHORT).show();
 
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mBluetoothLeScanner.stopScan(mScanCallback);
-            }
-        }, 1800000);
+//        mHandler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                mBluetoothLeScanner.stopScan(mScanCallback);
+//            }
+//        }, 1800000);
     }
 
     private void advertise() {
